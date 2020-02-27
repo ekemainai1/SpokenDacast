@@ -3,34 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/churchPageFragment">
+    app:startDestination="@id/spokenViewPager">
 
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.spokenwapp.ui.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.spokenwapp.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.spokenwapp.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
     <fragment
-        android:id="@+id/churchPageFragment"
-        android:name="com.example.spokenwapp.ui.church.ChurchPageFragment"
-        tools:layout="@layout/church_page_fragment" />
-    <fragment
-        android:id="@+id/localAudioPageFragment"
-        android:name="com.example.spokenwapp.ui.localaudio.LocalAudioPageFragment"
-        android:label="local_audio_page_fragment"
-        tools:layout="@layout/local_audio_page_fragment" />
-    <fragment
-        android:id="@+id/localVideoPageFragment"
-        android:name="com.example.spokenwapp.ui.localvideos.LocalVideoPageFragment"
-        android:label="local_video_page_fragment"
-        tools:layout="@layout/local_video_page_fragment" />
+        android:id="@+id/spokenViewPager"
+        android:name="com.example.spokenwapp.ui.pager.SpokenViewPager"
+        android:label="@string/title_activity_spoken_main_screen"
+        tools:layout="@layout/fragment_spoken_view_pager" />
 </navigation>

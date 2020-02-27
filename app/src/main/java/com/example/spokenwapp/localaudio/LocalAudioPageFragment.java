@@ -1,4 +1,4 @@
-package com.example.spokenwapp.ui.localvideos;
+package com.example.spokenwapp.localaudio;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -16,29 +16,29 @@ import android.widget.TextView;
 
 import com.example.spokenwapp.R;
 
-public class LocalVideoPageFragment extends Fragment {
+public class LocalAudioPageFragment extends Fragment {
 
-    private LocalVideoPageViewModel localVideoPageViewModel;
-    public static final String ARG_VIDEO = "Local Videos";
+    private LocalAudioPageViewModel localAudioPageViewModel;
+    public static final String ARG_AUDIO = "Local Audio";
     private View root;
 
-    public static LocalVideoPageFragment newInstance() {
-        return new LocalVideoPageFragment();
+    public static LocalAudioPageFragment newInstance() {
+        return new LocalAudioPageFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.local_video_page_fragment, container, false);
+        root = inflater.inflate(R.layout.local_audio_page_fragment, container, false);
         return root;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        localVideoPageViewModel = ViewModelProviders.of(this).get(LocalVideoPageViewModel.class);
-        final TextView textView = root.findViewById(R.id.localvideo);
-        localVideoPageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        localAudioPageViewModel = ViewModelProviders.of(this).get(LocalAudioPageViewModel.class);
+        final TextView textView = root.findViewById(R.id.localaudio);
+        localAudioPageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

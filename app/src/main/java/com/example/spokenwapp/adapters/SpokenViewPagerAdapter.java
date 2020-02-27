@@ -6,13 +6,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-import com.example.spokenwapp.ui.church.ChurchPageFragment;
-import com.example.spokenwapp.ui.localaudio.LocalAudioPageFragment;
-import com.example.spokenwapp.ui.localvideos.LocalVideoPageFragment;
+import com.example.spokenwapp.church.ChurchPageFragment;
+import com.example.spokenwapp.localaudio.LocalAudioPageFragment;
+import com.example.spokenwapp.localvideos.LocalVideoPageFragment;
 
 public class SpokenViewPagerAdapter extends FragmentStateAdapter {
     private Fragment fragment = new Fragment();
-    public SpokenViewPagerAdapter(@NonNull AppCompatActivity fragmentActivity) {
+    public SpokenViewPagerAdapter(@NonNull Fragment fragmentActivity) {
         super(fragmentActivity);
     }
 

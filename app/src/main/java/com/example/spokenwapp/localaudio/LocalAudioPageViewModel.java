@@ -1,15 +1,15 @@
-package com.example.spokenwapp.ui.church;
+package com.example.spokenwapp.localaudio;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ChurchPageViewModel extends ViewModel {
+public class LocalAudioPageViewModel extends ViewModel {
     private MutableLiveData<String> mText;
 
-    public ChurchPageViewModel() {
+    public LocalAudioPageViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is church fragment");
+        mText.setValue("This is local audio fragment");
     }
 
     public LiveData<String> getText() {

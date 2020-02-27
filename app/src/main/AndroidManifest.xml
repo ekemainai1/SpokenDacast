@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SpokenWordMain"
-            android:label="@string/title_activity_spoken_word_main"
+            android:name=".SpokenMainScreen"
+            android:label="@string/title_activity_spoken_main_screen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

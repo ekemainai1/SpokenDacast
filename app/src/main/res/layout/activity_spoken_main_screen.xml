@@ -9,10 +9,10 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-        <include
-            layout="@layout/app_bar_spoken_word_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <include
+        layout="@layout/app_bar_spoken_main_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_spoken_word_main"
-        app:menu="@menu/activity_spoken_word_main_drawer" />
+        app:headerLayout="@layout/nav_header_spoken_main_screen"
+        app:menu="@menu/activity_spoken_main_screen_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

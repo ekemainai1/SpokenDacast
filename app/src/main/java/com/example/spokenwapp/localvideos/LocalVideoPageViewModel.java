@@ -1,4 +1,4 @@
-package com.example.spokenwapp.ui.localvideos;
+package com.example.spokenwapp.localvideos;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

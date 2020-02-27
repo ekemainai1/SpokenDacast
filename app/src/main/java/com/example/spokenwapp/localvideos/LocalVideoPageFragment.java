@@ -1,4 +1,4 @@
-package com.example.spokenwapp.ui.church;
+package com.example.spokenwapp.localvideos;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -16,29 +16,29 @@ import android.widget.TextView;
 
 import com.example.spokenwapp.R;
 
-public class ChurchPageFragment extends Fragment {
+public class LocalVideoPageFragment extends Fragment {
 
-    private ChurchPageViewModel churchPageViewModel;
-    public static final String ARG_CHURCH = "Church";
+    private LocalVideoPageViewModel localVideoPageViewModel;
+    public static final String ARG_VIDEO = "Local Videos";
     private View root;
 
-    public static ChurchPageFragment newInstance() {
-        return new ChurchPageFragment();
+    public static LocalVideoPageFragment newInstance() {
+        return new LocalVideoPageFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.church_page_fragment, container, false);
+        root = inflater.inflate(R.layout.local_video_page_fragment, container, false);
         return root;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        churchPageViewModel = ViewModelProviders.of(this).get(ChurchPageViewModel.class);
-        final TextView textView = root.findViewById(R.id.church);
-        churchPageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        localVideoPageViewModel = ViewModelProviders.of(this).get(LocalVideoPageViewModel.class);
+        final TextView textView = root.findViewById(R.id.localvideo);
+        localVideoPageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

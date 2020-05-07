@@ -1,18 +1,30 @@
 package com.example.spokenwapp.localvideos;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
+import android.app.Application;
 import androidx.lifecycle.ViewModel;
+import com.example.spokenwapp.data.model.LocalVideoEntity;
+import com.example.spokenwapp.data.repository.LocalVideoRepository;
+import java.util.List;
+import javax.inject.Inject;
+
+import io.reactivex.Flowable;
+
 
 public class LocalVideoPageViewModel extends ViewModel {
-    private MutableLiveData<String> mText;
 
-    public LocalVideoPageViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is local video fragment");
+    @Inject
+    LocalVideoRepository localVideoRepository;
+
+    public Flowable<List<LocalVideoEntity>> getVideos(Application application){
+        return new LocalVideoRepository(application).allLocalVideos;
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public long insertVideos(LocalVideoEntity localVideoEntity){
+        return localVideoRepository.insertAllLocalVideos(localVideoEntity);
     }
+
+    public void deleteVideos(){
+        localVideoRepository.deleteAllVideos();
+    }
+
 }

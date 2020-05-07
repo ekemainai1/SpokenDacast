@@ -8,14 +8,44 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-
     <string name="home_second">Home Second</string>
     <string name="launch">LAUNCH!</string>
     <string name="title_activity_spoken_main_screen">SpokenApp</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="head_of_christ">Head of Christ</string>
+    <string name="spokenwordapp">SpokenApp</string>
+    <string name="william_marrion_branham">Rev. William Marrion Branham</string>
+    <string name="art_work">Art Work</string>
+    <string name="scan_app">Scan App</string>
+    <string name="equalizer">Equalizer</string>
+    <string name="text_favorites">Favorites</string>
+    <string name="text_schedules">Schedules</string>
+    <string name="text_music">Video Track</string>
+    <string name="church_last_played_content">Church Last Played Content</string>
+    <string name="spoken_word">Spoken Word</string>
+    <string name="local_video_thumbnail">Local Video Thumbnail</string>
+    <string name="video_title">Video Title</string>
+    <string name="video_artist">Video Artist</string>
+    <string name="local_video_file_size">Local Video File Size</string>
+    <string name="spokenapp">SpokenApp</string>
+    <string name="audio_title">Audio Title</string>
+    <string name="audio_artist">Audio Artist</string>
+    <string name="time">Time</string>
+    <string name="size">Size</string>
+    <string name="audio_songs_options">Audio Songs Options</string>
+    <string name="watch_service_online">Watch Service Online</string>
+    <string name="watch_service">WATCH SERVICE ONLINE</string>
+    <string name="seal_message">7-Seal Message</string>
+    <string name="download_video_sermons">DOWNLOAD VIDEO SERMONS</string>
+    <string name="download_audio_sermons">DOWNLOAD AUDIO SERMONS</string>
+    <string name="download_specials">DOWNLOAD SPECIALS</string>
+    <string name="annnoucement">ANNNOUCEMENT</string>
+    <string name="broadcast">Broadcast</string>
+    <string name="rtmp_demo">RTMP Demo</string>
+    <string name="hls_demo">HLS Demo</string>
+    <string name="streaming_logo">Streaming Logo</string>
+    <string name="dash_demo">DASH Demo</string>
+
 </resources>

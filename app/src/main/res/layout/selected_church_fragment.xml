@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/scbackground"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".selectedchurch.SelectedChurchFragment">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/selectedChurchImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/headofchrist"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewChurchOne"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/selectedChurchImage"
+        app:cardBackgroundColor="#E4BD83"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectedChurchImage"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/selectedTextOne"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/watch_service"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/selectedTextTwo"
+            android:layout_width="187dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="100dp"
+            android:text="@string/seal_message"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="135dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/goldengrain"
+            android:contentDescription="@string/watch_service_online" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/selectedChurchWmb"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/branham"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewChurchTwo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/selectedChurchImage"
+        android:layout_toEndOf="@id/cardViewChurchOne"
+        android:layout_toRightOf="@id/cardViewChurchOne"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintStart_toEndOf="@+id/cardViewChurchOne"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.167">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/videosdownload"
+            android:contentDescription="@string/watch_service_online" />
+
+        <TextView
+            android:id="@+id/selectedTextSec"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/download_video_sermons"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewChurchThree"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/cardViewChurchOne"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginEnd="208dp"
+        android:layout_marginRight="208dp"
+        app:cardBackgroundColor="#E4BD83"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.568">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/micforaudio"
+            android:contentDescription="@string/watch_service_online" />
+
+        <TextView
+            android:id="@+id/selectedTextAudioDownload"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="80dp"
+            android:text="@string/download_audio_sermons"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewChurchFour"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/cardViewChurchTwo"
+        android:layout_toEndOf="@id/cardViewChurchOne"
+        android:layout_toRightOf="@id/cardViewChurchOne"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.995"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewChurchTwo"
+        app:layout_constraintVertical_bias="0.053">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/sistersinging"
+            android:contentDescription="@string/watch_service_online" />
+
+        <TextView
+            android:id="@+id/selectedTextFourth"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="80dp"
+            android:text="@string/download_specials"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/announcement"
+        android:layout_width="307dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardViewChurchFour"
+        android:text="@string/annnoucement"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewChurchThree" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="407dp"
+        android:layout_height="154dp"
+        android:layout_below="@+id/announcement"
+        android:layout_margin="8dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/churchnews"
+        android:contentDescription="@string/watch_service_online"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/announcement" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

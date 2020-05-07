@@ -3,14 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#BCF8F0"
     tools:context=".church.ChurchPageFragment">
 
-    <TextView
-        android:id="@+id/church"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/churchGridview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
         android:layout_gravity="center"
-        android:textAlignment="center"
-         />
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="70dp"
+        android:layout_marginStart="4dp" />
 
 </FrameLayout>

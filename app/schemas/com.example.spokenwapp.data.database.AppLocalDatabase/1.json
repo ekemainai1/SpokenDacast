@@ -1,0 +1,132 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "9876d4b39c72f2388ca8af44354809c1",
+    "entities": [
+      {
+        "tableName": "localVideos_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`video_Id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `video_Title` TEXT, `video_Size` TEXT, `video_Duration` TEXT, `video_FilePath` TEXT, `video_ThumbnailUri` TEXT, `video_Artist` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "video_Id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "localVideoTitle",
+            "columnName": "video_Title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localVideoSize",
+            "columnName": "video_Size",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localVideoDuration",
+            "columnName": "video_Duration",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localVideoFilePath",
+            "columnName": "video_FilePath",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localVideoThumbnailUri",
+            "columnName": "video_ThumbnailUri",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localVideoArtist",
+            "columnName": "video_Artist",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "video_Id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "localAudio_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`audio_Id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `audio_Title` TEXT, `audio_Size` TEXT, `video_Duration` TEXT, `audio_FilePath` TEXT, `audio_ThumbnailUri` TEXT, `artist_Artist` TEXT, `artist_Album` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "audio_Id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "localAudioTitle",
+            "columnName": "audio_Title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localAudioSize",
+            "columnName": "audio_Size",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localAudioDuration",
+            "columnName": "video_Duration",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localAudioFilePath",
+            "columnName": "audio_FilePath",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localAudioThumbnailUri",
+            "columnName": "audio_ThumbnailUri",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localAudioArtist",
+            "columnName": "artist_Artist",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localAudioAlbum",
+            "columnName": "artist_Album",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "audio_Id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9876d4b39c72f2388ca8af44354809c1')"
+    ]
+  }
+}

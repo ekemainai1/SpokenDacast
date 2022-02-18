@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "419720757837",
+    "firebase_url": "https://ekemainaiapp.firebaseio.com",
+    "project_id": "ekemainaiapp",
+    "storage_bucket": "ekemainaiapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419720757837:android:26c1bee565efc0c5975204",
+        "android_client_info": {
+          "package_name": "com.example.spokenwapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419720757837-3956it28qhfd6p136ckptas78036kijr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCajVGmVUbmJe7a9cwi0lmvGONOBtP8hI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419720757837-3956it28qhfd6p136ckptas78036kijr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

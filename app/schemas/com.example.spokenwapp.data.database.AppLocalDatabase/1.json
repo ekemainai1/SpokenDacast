@@ -1,0 +1,1501 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "ce28322c78974caa0ec21826707c95f3",
+    "entities": [
+      {
+        "tableName": "localVideos_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`video_Id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `video_Title` TEXT, `video_Size` TEXT, `video_Duration` INTEGER NOT NULL, `video_FilePath` TEXT, `video_ThumbnailUri` TEXT, `video_Artist` TEXT, `video_Album` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "video_Id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "localVideoTitle",
+            "columnName": "video_Title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localVideoSize",
+            "columnName": "video_Size",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localVideoDuration",
+            "columnName": "video_Duration",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "localVideoFilePath",
+            "columnName": "video_FilePath",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localVideoThumbnailUri",
+            "columnName": "video_ThumbnailUri",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localVideoArtist",
+            "columnName": "video_Artist",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localVideoAlbum",
+            "columnName": "video_Album",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "video_Id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "localAudio_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`audio_Id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `audio_Title` TEXT, `audio_Size` TEXT, `audio_Duration` TEXT, `long_Duration` INTEGER NOT NULL, `audio_FilePath` TEXT, `audio_ThumbnailUri` TEXT, `artist_Artist` TEXT, `artist_Album` TEXT, `genres_id` TEXT, `genres_name` TEXT, `genres_key` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "audio_Id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "localAudioTitle",
+            "columnName": "audio_Title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localAudioSize",
+            "columnName": "audio_Size",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localAudioDuration",
+            "columnName": "audio_Duration",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localLongDuration",
+            "columnName": "long_Duration",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "localAudioFilePath",
+            "columnName": "audio_FilePath",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localAudioThumbnailUri",
+            "columnName": "audio_ThumbnailUri",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localAudioArtist",
+            "columnName": "artist_Artist",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localAudioAlbum",
+            "columnName": "artist_Album",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localGenresId",
+            "columnName": "genres_id",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localGenresName",
+            "columnName": "genres_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localGenresKey",
+            "columnName": "genres_key",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "audio_Id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "dacastlog_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `contentId` TEXT, `description` TEXT, `countdown_date` TEXT, `creation_date` TEXT, `hds` TEXT, `hls` TEXT, `thumbnail` TEXT, `splashscreen` TEXT, `facebook` TEXT, `tweeter` TEXT, `gplus` TEXT, `online` INTEGER NOT NULL, `publish_on_dacast` INTEGER NOT NULL, `ads` TEXT, `associated_packages` TEXT, `category_id` INTEGER NOT NULL, `company_url` TEXT, `countdown_timezone` INTEGER NOT NULL, `counter_live_limit` INTEGER NOT NULL, `countries_id` INTEGER NOT NULL, `custom_data` TEXT, `noframe_security` INTEGER NOT NULL, `autoplay` INTEGER NOT NULL, `enable_coupon` INTEGER NOT NULL, `enable_payperview` INTEGER NOT NULL, `enable_subscription` INTEGER NOT NULL, `external_video_page` TEXT, `google_analytics` INTEGER NOT NULL, `is_secure` INTEGER NOT NULL, `password` TEXT, `player_height` INTEGER NOT NULL, `player_width` INTEGER NOT NULL, `player_size_id` INTEGER NOT NULL, `referers_id` INTEGER NOT NULL, `rtmp` TEXT, `save_date` TEXT, `schedule` TEXT, `splashscreen_id` INTEGER NOT NULL, `stream_tech` TEXT, `theme_id` INTEGER NOT NULL, `thumbnail_id` INTEGER NOT NULL, `title` TEXT, `web_dvr` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contentId",
+            "columnName": "contentId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countdown_date",
+            "columnName": "countdown_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "creation_date",
+            "columnName": "creation_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hds",
+            "columnName": "hds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hls",
+            "columnName": "hls",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "thumbnail",
+            "columnName": "thumbnail",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "splashscreen",
+            "columnName": "splashscreen",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "facebook",
+            "columnName": "facebook",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tweeter",
+            "columnName": "tweeter",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "gplus",
+            "columnName": "gplus",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "online",
+            "columnName": "online",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "publish_on_dacast",
+            "columnName": "publish_on_dacast",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ads",
+            "columnName": "ads",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "associated_packages",
+            "columnName": "associated_packages",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "category_id",
+            "columnName": "category_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "company_url",
+            "columnName": "company_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countdown_timezone",
+            "columnName": "countdown_timezone",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "counter_live_limit",
+            "columnName": "counter_live_limit",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "countries_id",
+            "columnName": "countries_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "custom_data",
+            "columnName": "custom_data",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "noframe_security",
+            "columnName": "noframe_security",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "autoplay",
+            "columnName": "autoplay",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "enable_coupon",
+            "columnName": "enable_coupon",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "enable_payperview",
+            "columnName": "enable_payperview",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "enable_subscription",
+            "columnName": "enable_subscription",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "external_video_page",
+            "columnName": "external_video_page",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "google_analytics",
+            "columnName": "google_analytics",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "is_secure",
+            "columnName": "is_secure",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "password",
+            "columnName": "password",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "player_height",
+            "columnName": "player_height",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "player_width",
+            "columnName": "player_width",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "player_size_id",
+            "columnName": "player_size_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "referers_id",
+            "columnName": "referers_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rtmp",
+            "columnName": "rtmp",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "save_date",
+            "columnName": "save_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "schedule",
+            "columnName": "schedule",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "splashscreen_id",
+            "columnName": "splashscreen_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stream_tech",
+            "columnName": "stream_tech",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "theme_id",
+            "columnName": "theme_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thumbnail_id",
+            "columnName": "thumbnail_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "web_dvr",
+            "columnName": "web_dvr",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_dacastlog_table_contentId",
+            "unique": true,
+            "columnNames": [
+              "contentId"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_dacastlog_table_contentId` ON `${TABLE_NAME}` (`contentId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "dacastvodlog_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `contentIds` TEXT, `totalCount` TEXT, `abitrate` INTEGER, `acodec` TEXT, `ads` TEXT, `associated_packages` TEXT, `category_id` INTEGER, `container` TEXT, `countries_id` INTEGER, `creation_date` TEXT, `custom_data` TEXT, `noframe_security` INTEGER, `description` TEXT, `disk_usage` TEXT, `duration` TEXT, `autoplay` INTEGER, `enable_coupon` INTEGER, `online` INTEGER, `enable_payperview` INTEGER, `publish_on_dacast` INTEGER, `enable_subscription` INTEGER, `external_video_page` TEXT, `filename` TEXT, `filesize` INTEGER, `google_analytics` INTEGER, `group_id` INTEGER, `hds` TEXT, `hls` TEXT, `is_secured` INTEGER, `original_id` INTEGER, `password` TEXT, `player_height` INTEGER, `player_width` INTEGER, `player_size_id` INTEGER, `referers_id` INTEGER, `save_date` TEXT, `splashscreen_id` INTEGER, `streamable` INTEGER, `subtitles` TEXT, `template_id` INTEGER, `theme_id` INTEGER, `thumbnail_id` INTEGER, `title` TEXT, `vbitrate` INTEGER, `vcodec` TEXT, `video_height` INTEGER, `video_width` INTEGER, `thumbnail` TEXT, `splashscreen` TEXT, `facebook` TEXT, `tweeter` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contentIds",
+            "columnName": "contentIds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalCount",
+            "columnName": "totalCount",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "abitrate",
+            "columnName": "abitrate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "acodec",
+            "columnName": "acodec",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ads",
+            "columnName": "ads",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "associatedPackages",
+            "columnName": "associated_packages",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "categoryId",
+            "columnName": "category_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "container",
+            "columnName": "container",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countriesId",
+            "columnName": "countries_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "creationDate",
+            "columnName": "creation_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "customData",
+            "columnName": "custom_data",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "noframeSecurity",
+            "columnName": "noframe_security",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "diskUsage",
+            "columnName": "disk_usage",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "duration",
+            "columnName": "duration",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "autoplay",
+            "columnName": "autoplay",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "enableCoupon",
+            "columnName": "enable_coupon",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "online",
+            "columnName": "online",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "enablePayperview",
+            "columnName": "enable_payperview",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "publishOnDacast",
+            "columnName": "publish_on_dacast",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "enableSubscription",
+            "columnName": "enable_subscription",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "externalVideoPage",
+            "columnName": "external_video_page",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "filename",
+            "columnName": "filename",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "filesize",
+            "columnName": "filesize",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "googleAnalytics",
+            "columnName": "google_analytics",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "groupId",
+            "columnName": "group_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hds",
+            "columnName": "hds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hls",
+            "columnName": "hls",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isSecured",
+            "columnName": "is_secured",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "originalId",
+            "columnName": "original_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "password",
+            "columnName": "password",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerHeight",
+            "columnName": "player_height",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerWidth",
+            "columnName": "player_width",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerSizeId",
+            "columnName": "player_size_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "referersId",
+            "columnName": "referers_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "saveDate",
+            "columnName": "save_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "splashscreenId",
+            "columnName": "splashscreen_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "streamable",
+            "columnName": "streamable",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "subtitles",
+            "columnName": "subtitles",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "templateId",
+            "columnName": "template_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "themeId",
+            "columnName": "theme_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "thumbnailId",
+            "columnName": "thumbnail_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "vbitrate",
+            "columnName": "vbitrate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "vcodec",
+            "columnName": "vcodec",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "videoHeight",
+            "columnName": "video_height",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "videoWidth",
+            "columnName": "video_width",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "thumbnail",
+            "columnName": "thumbnail",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "splashscreen",
+            "columnName": "splashscreen",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "facebook",
+            "columnName": "facebook",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tweeter",
+            "columnName": "tweeter",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_dacastvodlog_table_contentIds",
+            "unique": true,
+            "columnNames": [
+              "contentIds"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_dacastvodlog_table_contentIds` ON `${TABLE_NAME}` (`contentIds`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "dacastaudioSermonlog_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `contentIds` TEXT, `totalCount` TEXT, `abitrate` INTEGER, `acodec` TEXT, `ads` TEXT, `associated_packages` TEXT, `category_id` INTEGER, `container` TEXT, `countries_id` INTEGER, `creation_date` TEXT, `custom_data` TEXT, `noframe_security` INTEGER, `description` TEXT, `disk_usage` TEXT, `duration` TEXT, `autoplay` INTEGER, `enable_coupon` INTEGER, `online` INTEGER, `enable_payperview` INTEGER, `publish_on_dacast` INTEGER, `enable_subscription` INTEGER, `external_video_page` TEXT, `filename` TEXT, `filesize` INTEGER, `google_analytics` INTEGER, `group_id` INTEGER, `hds` TEXT, `hls` TEXT, `is_secured` INTEGER, `original_id` INTEGER, `password` TEXT, `player_height` INTEGER, `player_width` INTEGER, `player_size_id` INTEGER, `referers_id` INTEGER, `save_date` TEXT, `splashscreen_id` INTEGER, `streamable` INTEGER, `subtitles` TEXT, `template_id` INTEGER, `theme_id` INTEGER, `thumbnail_id` INTEGER, `title` TEXT, `vbitrate` INTEGER, `vcodec` TEXT, `video_height` INTEGER, `video_width` INTEGER, `thumbnail` TEXT, `splashscreen` TEXT, `facebook` TEXT, `tweeter` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contentIds",
+            "columnName": "contentIds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalCount",
+            "columnName": "totalCount",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "abitrate",
+            "columnName": "abitrate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "acodec",
+            "columnName": "acodec",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ads",
+            "columnName": "ads",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "associatedPackages",
+            "columnName": "associated_packages",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "categoryId",
+            "columnName": "category_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "container",
+            "columnName": "container",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countriesId",
+            "columnName": "countries_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "creationDate",
+            "columnName": "creation_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "customData",
+            "columnName": "custom_data",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "noframeSecurity",
+            "columnName": "noframe_security",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "diskUsage",
+            "columnName": "disk_usage",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "duration",
+            "columnName": "duration",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "autoplay",
+            "columnName": "autoplay",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "enableCoupon",
+            "columnName": "enable_coupon",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "online",
+            "columnName": "online",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "enablePayperview",
+            "columnName": "enable_payperview",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "publishOnDacast",
+            "columnName": "publish_on_dacast",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "enableSubscription",
+            "columnName": "enable_subscription",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "externalVideoPage",
+            "columnName": "external_video_page",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "filename",
+            "columnName": "filename",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "filesize",
+            "columnName": "filesize",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "googleAnalytics",
+            "columnName": "google_analytics",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "groupId",
+            "columnName": "group_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hds",
+            "columnName": "hds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hls",
+            "columnName": "hls",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isSecured",
+            "columnName": "is_secured",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "originalId",
+            "columnName": "original_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "password",
+            "columnName": "password",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerHeight",
+            "columnName": "player_height",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerWidth",
+            "columnName": "player_width",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerSizeId",
+            "columnName": "player_size_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "referersId",
+            "columnName": "referers_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "saveDate",
+            "columnName": "save_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "splashscreenId",
+            "columnName": "splashscreen_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "streamable",
+            "columnName": "streamable",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "subtitles",
+            "columnName": "subtitles",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "templateId",
+            "columnName": "template_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "themeId",
+            "columnName": "theme_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "thumbnailId",
+            "columnName": "thumbnail_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "vbitrate",
+            "columnName": "vbitrate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "vcodec",
+            "columnName": "vcodec",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "videoHeight",
+            "columnName": "video_height",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "videoWidth",
+            "columnName": "video_width",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "thumbnail",
+            "columnName": "thumbnail",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "splashscreen",
+            "columnName": "splashscreen",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "facebook",
+            "columnName": "facebook",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tweeter",
+            "columnName": "tweeter",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_dacastaudioSermonlog_table_contentIds",
+            "unique": true,
+            "columnNames": [
+              "contentIds"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_dacastaudioSermonlog_table_contentIds` ON `${TABLE_NAME}` (`contentIds`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "dacastspecialsSermonlog_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `contentIds` TEXT, `totalCount` TEXT, `abitrate` INTEGER, `acodec` TEXT, `ads` TEXT, `associated_packages` TEXT, `category_id` INTEGER, `container` TEXT, `countries_id` INTEGER, `creation_date` TEXT, `custom_data` TEXT, `noframe_security` INTEGER, `description` TEXT, `disk_usage` TEXT, `duration` TEXT, `autoplay` INTEGER, `enable_coupon` INTEGER, `online` INTEGER, `enable_payperview` INTEGER, `publish_on_dacast` INTEGER, `enable_subscription` INTEGER, `external_video_page` TEXT, `filename` TEXT, `filesize` INTEGER, `google_analytics` INTEGER, `group_id` INTEGER, `hds` TEXT, `hls` TEXT, `is_secured` INTEGER, `original_id` INTEGER, `password` TEXT, `player_height` INTEGER, `player_width` INTEGER, `player_size_id` INTEGER, `referers_id` INTEGER, `save_date` TEXT, `splashscreen_id` INTEGER, `streamable` INTEGER, `subtitles` TEXT, `template_id` INTEGER, `theme_id` INTEGER, `thumbnail_id` INTEGER, `title` TEXT, `vbitrate` INTEGER, `vcodec` TEXT, `video_height` INTEGER, `video_width` INTEGER, `thumbnail` TEXT, `splashscreen` TEXT, `facebook` TEXT, `tweeter` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contentIds",
+            "columnName": "contentIds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalCount",
+            "columnName": "totalCount",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "abitrate",
+            "columnName": "abitrate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "acodec",
+            "columnName": "acodec",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ads",
+            "columnName": "ads",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "associatedPackages",
+            "columnName": "associated_packages",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "categoryId",
+            "columnName": "category_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "container",
+            "columnName": "container",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "countriesId",
+            "columnName": "countries_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "creationDate",
+            "columnName": "creation_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "customData",
+            "columnName": "custom_data",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "noframeSecurity",
+            "columnName": "noframe_security",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "diskUsage",
+            "columnName": "disk_usage",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "duration",
+            "columnName": "duration",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "autoplay",
+            "columnName": "autoplay",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "enableCoupon",
+            "columnName": "enable_coupon",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "online",
+            "columnName": "online",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "enablePayperview",
+            "columnName": "enable_payperview",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "publishOnDacast",
+            "columnName": "publish_on_dacast",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "enableSubscription",
+            "columnName": "enable_subscription",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "externalVideoPage",
+            "columnName": "external_video_page",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "filename",
+            "columnName": "filename",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "filesize",
+            "columnName": "filesize",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "googleAnalytics",
+            "columnName": "google_analytics",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "groupId",
+            "columnName": "group_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hds",
+            "columnName": "hds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hls",
+            "columnName": "hls",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isSecured",
+            "columnName": "is_secured",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "originalId",
+            "columnName": "original_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "password",
+            "columnName": "password",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerHeight",
+            "columnName": "player_height",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerWidth",
+            "columnName": "player_width",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerSizeId",
+            "columnName": "player_size_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "referersId",
+            "columnName": "referers_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "saveDate",
+            "columnName": "save_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "splashscreenId",
+            "columnName": "splashscreen_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "streamable",
+            "columnName": "streamable",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "subtitles",
+            "columnName": "subtitles",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "templateId",
+            "columnName": "template_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "themeId",
+            "columnName": "theme_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "thumbnailId",
+            "columnName": "thumbnail_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "vbitrate",
+            "columnName": "vbitrate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "vcodec",
+            "columnName": "vcodec",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "videoHeight",
+            "columnName": "video_height",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "videoWidth",
+            "columnName": "video_width",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "thumbnail",
+            "columnName": "thumbnail",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "splashscreen",
+            "columnName": "splashscreen",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "facebook",
+            "columnName": "facebook",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tweeter",
+            "columnName": "tweeter",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_dacastspecialsSermonlog_table_contentIds",
+            "unique": true,
+            "columnNames": [
+              "contentIds"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_dacastspecialsSermonlog_table_contentIds` ON `${TABLE_NAME}` (`contentIds`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "dacastanalytics_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`analytics_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `visitors` INTEGER, `hits` INTEGER, `channel` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "analytics_id",
+            "columnName": "analytics_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "visitors",
+            "columnName": "visitors",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hits",
+            "columnName": "hits",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "channel",
+            "columnName": "channel",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "analytics_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_dacastanalytics_table_channel",
+            "unique": true,
+            "columnNames": [
+              "channel"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_dacastanalytics_table_channel` ON `${TABLE_NAME}` (`channel`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ce28322c78974caa0ec21826707c95f3')"
+    ]
+  }
+}

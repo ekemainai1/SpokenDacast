@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/spokenViewPager">
+
+
+    <fragment
+        android:id="@+id/nav_artwork"
+        android:name="com.example.spokenwapp.ui.artwork.ArtWorkFragment"
+        android:label="@string/art_work"
+        tools:layout="@layout/fragment_artwork"/>
+
+    <fragment
+        android:id="@+id/nav_scanapp"
+        android:name="com.example.spokenwapp.ui.scan.ScanAppFragment"
+        android:label="@string/scan_app"
+        tools:layout="@layout/fragment_scanapp" />
+
+    <fragment
+        android:id="@+id/nav_equalizer"
+        android:name="com.example.spokenwapp.ui.equalizer.SpokenEqualizerFragment"
+        android:label="@string/equalizer"
+        tools:layout="@layout/spoken_fragment_equalizer" />
+
+    <fragment
+        android:id="@+id/spokenViewPager"
+        android:name="com.example.spokenwapp.ui.pager.SpokenViewPager"
+        android:label="@string/title_activity_spoken_main_screen"
+        tools:layout="@layout/fragment_spoken_view_pager" />
+    <fragment
+        android:id="@+id/churchPageFragment"
+        android:name="com.example.spokenwapp.church.ChurchPageFragment"
+        android:label="church_page_fragment"
+        tools:layout="@layout/church_page_fragment" />
+    <fragment
+        android:id="@+id/localAudioPageFragment"
+        android:name="com.example.spokenwapp.localaudio.LocalAudioPageFragment"
+        android:label="local_audio_page_fragment"
+        tools:layout="@layout/local_audio_page_fragment" />
+    <fragment
+        android:id="@+id/localVideoPageFragment"
+        android:name="com.example.spokenwapp.localvideos.LocalVideoPageFragment"
+        android:label="local_video_page_fragment"
+        tools:layout="@layout/local_video_page_fragment" />
+    <fragment
+        android:id="@+id/selectedChurchFragment"
+        android:name="com.example.spokenwapp.selectedchurch.SelectedChurchFragment"
+        android:label="selected_church_fragment"
+        tools:layout="@layout/selected_church_fragment" />
+    <fragment
+        android:id="@+id/spokenOnlineService"
+        android:name="com.example.spokenwapp.online.SpokenOnlineService"
+        android:label="SpokenOnlineService" />
+    <fragment
+        android:id="@+id/spokenOnlinePlayerFragment"
+        android:name="com.example.spokenwapp.players.SpokenOnlinePlayerFragment"
+        android:label="fragment_spoken_online_player"
+        tools:layout="@layout/fragment_spoken_online_player" />
+    <fragment
+        android:id="@+id/spokenLocalAudioSearchFragment"
+        android:name="com.example.spokenwapp.search.SpokenLocalAudioSearchFragment"
+        android:label="spoken_local_audio_search_fragment"
+        tools:layout="@layout/spoken_local_audio_search_fragment" />
+</navigation>

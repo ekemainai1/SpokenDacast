@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -27,6 +27,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tabGravity="fill"
             app:tabIndicatorHeight="5dp"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
             app:tabTextColor="@android:color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -38,8 +39,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        >
 
     </androidx.viewpager2.widget.ViewPager2>
 
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

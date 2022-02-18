@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 public class Church {
 
-
     int churchLogo;
     String churchName;
 

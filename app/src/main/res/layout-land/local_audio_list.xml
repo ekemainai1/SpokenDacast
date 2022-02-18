@@ -5,17 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/itemholder"
     android:layout_marginTop="8dp">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/audioThumbnail"
         android:layout_width="67dp"
-        android:layout_height="118dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:src="@drawable/wmb"
+        android:src="@drawable/branham"
         card_view:civ_border_color="#FF000000"
         card_view:civ_border_width="2dp"
         card_view:layout_constraintBottom_toBottomOf="parent"
@@ -30,11 +28,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
-        android:layout_marginLeft="120dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_toEndOf="@id/audioThumbnail"
-        android:layout_toRightOf="@id/audioThumbnail"
         android:ellipsize="end"
         android:maxLines="1"
         android:text="@string/audio_title"
@@ -53,13 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/audioTitle"
         android:layout_marginStart="120dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="31dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="32dp"
         android:layout_toEndOf="@id/audioThumbnail"
-        android:layout_toRightOf="@id/audioThumbnail"
         android:ellipsize="end"
         android:maxLines="1"
         android:text="@string/audio_artist"
@@ -67,29 +57,26 @@
         android:textStyle="italic"
         card_view:layout_constraintBottom_toBottomOf="parent"
         card_view:layout_constraintEnd_toStartOf="@+id/guideline"
-        card_view:layout_constraintHorizontal_bias="0.133"
+        card_view:layout_constraintHorizontal_bias="0.0"
         card_view:layout_constraintStart_toStartOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent"
-        card_view:layout_constraintVertical_bias="1.0" />
+        card_view:layout_constraintTop_toBottomOf="@+id/audioTitle" />
 
     <TextView
         android:id="@+id/audioTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="36dp"
         android:layout_toEndOf="@+id/audioTitle"
-        android:layout_toRightOf="@+id/audioTitle"
         android:ellipsize="end"
         android:maxLines="1"
         android:text="@string/time"
         android:textSize="16sp"
         card_view:layout_constraintBottom_toBottomOf="parent"
         card_view:layout_constraintEnd_toStartOf="@+id/audioChoice"
-        card_view:layout_constraintHorizontal_bias="0.0"
+        card_view:layout_constraintHorizontal_bias="1.0"
         card_view:layout_constraintStart_toStartOf="@+id/guideline"
         card_view:layout_constraintTop_toTopOf="parent"
-        card_view:layout_constraintVertical_bias="0.242" />
+        card_view:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/audioSize"
@@ -97,10 +84,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/audioTime"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="36dp"
         android:layout_toEndOf="@+id/audioArtist"
-        android:layout_toRightOf="@+id/audioArtist"
         android:ellipsize="end"
         android:maxLines="1"
         android:textStyle="italic"
@@ -118,11 +103,9 @@
         android:layout_width="46dp"
         android:layout_height="47dp"
         android:layout_marginEnd="36dp"
-        android:layout_marginRight="36dp"
         android:layout_toEndOf="@id/audioTime"
-        android:layout_toRightOf="@id/audioTime"
         android:contentDescription="@string/audio_songs_options"
-        android:src="@drawable/ic_expand_more_black_24dp"
+        android:src="@drawable/ic_baseline_menu_open_24"
         card_view:layout_constraintBottom_toBottomOf="parent"
         card_view:layout_constraintEnd_toEndOf="parent"
         card_view:layout_constraintHorizontal_bias="0.958"
@@ -134,6 +117,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        card_view:layout_constraintGuide_end="296dp" />
+        card_view:layout_constraintGuide_end="366dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

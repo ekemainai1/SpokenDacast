@@ -1,8 +1,11 @@
 package com.example.spokenwapp.adapters;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
+import android.util.Log;
 import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +14,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.spokenwapp.R;
+import com.example.spokenwapp.church.ChurchPageViewModel;
 import com.example.spokenwapp.data.model.LocalAudioEntity;
 import com.example.spokenwapp.data.model.LocalVideoEntity;
+import com.example.spokenwapp.localaudio.LocalAudioPageViewModel;
+import com.example.spokenwapp.utilities.SpokenBitmapImageProcessor;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
+import com.squareup.picasso.StatsSnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,19 +39,34 @@ import javax.inject.Inject;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.functions.Consumer;
 
+import static android.content.Context.ACTIVITY_SERVICE;
+
 public class LocalAudioListAdapter extends RecyclerView.Adapter<LocalAudioListAdapter.LocalAudioListViewHolder>{
 
     @Inject
     Context context;
-    @Inject
-    List<LocalAudioEntity> audioEntities;
-    Consumer<List<LocalAudioEntity>> consumer;
+    List<LocalAudioEntity> audioEntities = new ArrayList<>();
+    SpokenBitmapImageProcessor imageProcessor = new SpokenBitmapImageProcessor();
+    private int mTrackPlaying = -1;
+
+
 
     @Inject
-    public LocalAudioListAdapter(List<LocalAudioEntity> audioEntities,
-                                 Consumer<List<LocalAudioEntity>> consumer) {
-        this.audioEntities = audioEntities;
-        this.consumer = consumer;
+    public LocalAudioListAdapter(LocalAudioPageViewModel viewModel, LifecycleOwner lifecycleOwner,
+                                Context context) {
+        this.context = context;
+        viewModel.getLocalAudioRepos().observe(lifecycleOwner, repos -> {
+            if (audioEntities != null) {
+                audioEntities.clear();
+            }
+
+            if (repos != null) {
+                assert audioEntities != null;
+                audioEntities.addAll(repos);
+                notifyDataSetChanged();
+            }
+        });
+        setHasStableIds(true);
     }
 
     @NonNull
@@ -51,22 +80,35 @@ public class LocalAudioListAdapter extends RecyclerView.Adapter<LocalAudioListAd
     @Override
     public void onBindViewHolder(@NonNull LocalAudioListAdapter.LocalAudioListViewHolder holder, int position) {
         LocalAudioEntity localAudioEntity = audioEntities.get(position);
+        if(position == mTrackPlaying) {
+            holder.itemView.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_blue_light));
+        } else {
+            // Here, you must restore the color because the view is reused.. so, you may receive a reused view with wrong colors
+            holder.itemView.setBackgroundColor(ContextCompat.getColor(context, android.R.color.white));
+        }
 
         Bitmap bitmap;
 
-        try {
-            bitmap = retrieveAudioFrameFromAudio(localAudioEntity.getLocalAudioFilePath());
-            bitmap = Bitmap.createScaledBitmap(bitmap, 150, 100, false);
-            holder.audioThumbnail.setImageBitmap(bitmap);
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-            //Log.e("BitMapSize", ""+bitmap.toString());
-            holder.audioTitle.setText(localAudioEntity.getLocalAudioTitle());
-            holder.audioArtist.setText(localAudioEntity.getLocalAudioArtist());
-            holder.audioFileSize.setText(localAudioEntity.getLocalAudioSize());
-            holder.audioTime.setText(localAudioEntity.getLocalAudioDuration());
-            holder.audioOptions.setImageResource(R.drawable.ic_expand_more_black_24dp);
+        Glide
+                .with(context)
+                .load(localAudioEntity.getLocalAudioFilePath())
+                .centerCrop()
+                .placeholder(R.drawable.branham)
+                .into(holder.audioThumbnail);
+        //holder.audioThumbnail.setImageBitmap(bitmap);
+
+
+        //Log.e("BitMapSize", ""+bitmap.toString());
+        holder.audioTitle.setText(localAudioEntity.getLocalAudioTitle());
+        holder.audioArtist.setText(localAudioEntity.getLocalAudioArtist());
+        holder.audioFileSize.setText(localAudioEntity.getLocalAudioSize());
+        holder.audioTime.setText(localAudioEntity.getLocalAudioDuration());
+        holder.audioOptions.setImageResource(R.drawable.ic_baseline_menu_open_24);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return audioEntities.get(position).getId();
     }
 
     @Override
@@ -96,28 +138,26 @@ public class LocalAudioListAdapter extends RecyclerView.Adapter<LocalAudioListAd
             }
         }
 
-    public static Bitmap retrieveAudioFrameFromAudio(String audioPath)
-            throws Throwable {
-        Bitmap bitmap = null;
-        MediaMetadataRetriever mediaMetadataRetriever = null;
-        try {
-            mediaMetadataRetriever = new MediaMetadataRetriever();
-            mediaMetadataRetriever.setDataSource(audioPath, new HashMap<String, String>());
-            mediaMetadataRetriever.setDataSource(audioPath);
 
-            bitmap = mediaMetadataRetriever.getFrameAtTime(1, MediaMetadataRetriever.OPTION_CLOSEST);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Throwable(
-                    "Exception in retrieveAudioFrameFromAudio(String audioPath)"
-                            + e.getMessage());
-
-        } finally {
-            if (mediaMetadataRetriever != null) {
-                mediaMetadataRetriever.release();
-            }
-        }
-        return bitmap;
+    public String getTitle(int pos){
+        return audioEntities.get(pos).getLocalAudioTitle();
     }
+
+    public String getId(int pos){
+        return String.valueOf(audioEntities.get(pos).getId());
+    }
+
+    public String getSongPath(int pos){
+        return audioEntities.get(pos).getLocalAudioFilePath();
+    }
+
+    public String getSongGenre(int pos){
+        return audioEntities.get(pos).getLocalGenresName();
+    }
+
+    public void setTrackPlaying(int position) {
+        mTrackPlaying = position;
+    }
+
 
 }

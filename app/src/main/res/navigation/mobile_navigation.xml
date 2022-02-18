@@ -20,9 +20,9 @@
 
     <fragment
         android:id="@+id/nav_equalizer"
-        android:name="com.example.spokenwapp.ui.equalizer.EqualizerFragment"
+        android:name="com.example.spokenwapp.ui.equalizer.SpokenEqualizerFragment"
         android:label="@string/equalizer"
-        tools:layout="@layout/fragment_equalizer" />
+        tools:layout="@layout/spoken_fragment_equalizer" />
 
     <fragment
         android:id="@+id/spokenViewPager"
@@ -54,7 +54,13 @@
         android:name="com.example.spokenwapp.online.SpokenOnlineService"
         android:label="SpokenOnlineService" />
     <fragment
-        android:id="@+id/spokenChooseURLFragment"
-        android:name="com.example.spokenwapp.online.SpokenChooseURLFragment"
-        android:label="SpokenChooseURLFragment" />
+        android:id="@+id/spokenOnlinePlayerFragment"
+        android:name="com.example.spokenwapp.players.SpokenOnlinePlayerFragment"
+        android:label="fragment_spoken_online_player"
+        tools:layout="@layout/fragment_spoken_online_player" />
+    <fragment
+        android:id="@+id/spokenLocalAudioSearchFragment"
+        android:name="com.example.spokenwapp.search.SpokenLocalAudioSearchFragment"
+        android:label="spoken_local_audio_search_fragment"
+        tools:layout="@layout/spoken_local_audio_search_fragment" />
 </navigation>

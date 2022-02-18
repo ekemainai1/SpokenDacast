@@ -2,9 +2,9 @@ package com.example.spokenwapp.di.components;
 
 
 import android.app.Application;
-
-import com.example.spokenwapp.online.SpokenChooseURLFragment;
 import com.example.spokenwapp.online.SpokenOnlineService;
+import com.example.spokenwapp.players.SpokenOnlinePlayerFragment;
+import com.example.spokenwapp.search.SpokenLocalAudioSearchFragment;
 import com.example.spokenwapp.selectedchurch.SelectedChurchFragment;
 import com.example.spokenwapp.base.SplashScreen;
 import com.example.spokenwapp.base.SpokenBaseApplication;
@@ -19,14 +19,20 @@ import com.example.spokenwapp.di.modules.LocalVideoRepoModule;
 import com.example.spokenwapp.localaudio.LocalAudioPageFragment;
 import com.example.spokenwapp.localvideos.LocalVideoPageFragment;
 import com.example.spokenwapp.services.LoadLocalVideoService;
-
+import com.example.spokenwapp.services.SpokenAnalyticsWorkManager;
+import com.example.spokenwapp.services.SpokenDacastIntentService;
+import com.example.spokenwapp.services.SpokenDacastJobScheduler;
+import com.example.spokenwapp.services.SpokenDacastVodIntentService;
+import com.example.spokenwapp.services.SpokenDacastVodWorkManager;
+import com.example.spokenwapp.services.SpokenDacastWorkManager;
+import com.example.spokenwapp.services.SpokenMediaBrowserService;
 import javax.inject.Singleton;
-
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 import dagger.android.support.AndroidSupportInjectionModule;
+import retrofit2.Retrofit;
 
 
 @Singleton
@@ -45,6 +51,7 @@ public interface ApplicationComponent extends AndroidInjector<DaggerApplication>
         Builder application(Application application);
         Builder applicationModule(ApplicationModule applicationModule);
         Builder localVideoRepoModule(LocalVideoRepoModule localVideoRepoModule);
+
         ApplicationComponent build();
     }
 
@@ -57,8 +64,17 @@ public interface ApplicationComponent extends AndroidInjector<DaggerApplication>
     void inject(LoadLocalVideoService loadLocalVideoService);
     void inject(SelectedChurchFragment selectedChurchFragment);
     void inject(SpokenOnlineService spokenOnlineService);
-    void inject(SpokenChooseURLFragment spokenChooseURLFragment);
     void inject(ViewModelFactory viewModelFactory);
+    void inject(SpokenDacastJobScheduler spokenDacastJobScheduler);
+    void inject(SpokenDacastWorkManager spokenDacastWorkManager);
+    void inject(SpokenDacastIntentService spokenDacastIntentService);
+    void inject(SpokenDacastVodIntentService spokenDacastVodIntentService);
+    void inject(SpokenDacastVodWorkManager spokenDacastVodWorkManager);
+    void inject(SpokenOnlinePlayerFragment spokenOnlinePlayerFragment);
+    void inject(SpokenAnalyticsWorkManager spokenAnalyticsWorkManager);
+    void inject(SpokenMediaBrowserService spokenMediaBrowserService);
+    void inject(SpokenLocalAudioSearchFragment spokenLocalAudioSearchFragment);
 
+    Retrofit getRetrofit();
 
 }

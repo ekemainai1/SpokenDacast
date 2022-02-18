@@ -1,47 +1,54 @@
 package com.example.spokenwapp.church;
 
-import androidx.lifecycle.ViewModelProviders;
+
+import androidx.lifecycle.ViewModelProvider;
 import android.app.Activity;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.example.spokenwapp.R;
 import com.example.spokenwapp.adapters.ChurchListAdapter;
 import com.example.spokenwapp.adapters.DividerItemDecorator;
 import com.example.spokenwapp.adapters.OnItemTouchListener;
 import com.example.spokenwapp.adapters.RecyclerViewOnItemTouchListener;
 import com.example.spokenwapp.base.SpokenBaseApplication;
+import com.example.spokenwapp.base.SpokenMainScreen;
 import com.example.spokenwapp.base.ViewModelFactory;
-import com.example.spokenwapp.data.model.Church;
+import com.example.spokenwapp.data.model.DacastChannelAnalyticsEntity;
 import com.example.spokenwapp.di.components.ApplicationComponent;
 import com.example.spokenwapp.di.components.DaggerApplicationComponent;
 import com.example.spokenwapp.di.modules.ApplicationModule;
 import com.example.spokenwapp.di.modules.LocalVideoRepoModule;
+import com.example.spokenwapp.utilities.SpokenSharedPreferences;
 import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import dagger.android.support.DaggerFragment;
 
 
 public class ChurchPageFragment extends DaggerFragment {
 
-    private ChurchPageViewModel churchPageViewModel;
     public static final String ARG_CHURCH = "Church";
     private View root;
     RecyclerView churchGridView;
-    private RecyclerView.LayoutManager manager;
-    Church church;
-    @Inject
-    ArrayList<Church> list;
+    List<DacastChannelAnalyticsEntity> list;
     ApplicationComponent applicationComponent;
     @Inject
     ViewModelFactory viewModelFactory;
+    ChurchPageViewModel churchPageViewModel;
+    TextView errorTextView;
+    ProgressBar progressBar;
+    SpokenSharedPreferences spokenSharedPreferences;
+    ChurchListAdapter churchListAdapter;
+    TextView toolbarTitle;
 
 
     public static ChurchPageFragment newInstance() {
@@ -65,15 +72,42 @@ public class ChurchPageFragment extends DaggerFragment {
                 .build();
         applicationComponent.inject(this);
 
-        churchPageViewModel = ViewModelProviders.of(this, viewModelFactory).get(ChurchPageViewModel.class);
+        churchPageViewModel = new ViewModelProvider(this, viewModelFactory).get(ChurchPageViewModel.class);
 
-        loadAvailableChurches();
-        churchGridView.addOnItemTouchListener(new RecyclerViewOnItemTouchListener( this
-                .getActivity().getApplicationContext(),
-               churchGridView, new OnItemTouchListener() {
+        churchGridView = root.findViewById(R.id.churchGridview);
+        errorTextView = root.findViewById(R.id.churchErrorText);
+        progressBar = root.findViewById(R.id.progressBar2);
+        list = new ArrayList<DacastChannelAnalyticsEntity>();
+
+        churchListAdapter = new ChurchListAdapter(churchPageViewModel,this,
+                this.requireActivity());
+
+        list = getChurchList();
+        churchGridView.setHasFixedSize(true);
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(this.requireActivity());
+        churchGridView.setLayoutManager(manager);
+        churchGridView.addItemDecoration(new DividerItemDecorator(1));
+        churchGridView.setAdapter(churchListAdapter);
+
+        spokenSharedPreferences = new SpokenSharedPreferences(requireActivity());
+
+
+        churchGridView.addOnItemTouchListener(new RecyclerViewOnItemTouchListener(this
+                .requireActivity().getApplicationContext(),
+                churchGridView, new OnItemTouchListener() {
             @Override
             public void onClick(View view, int position) {
-                Navigation.findNavController(view).navigate(R.id.spokenChooseURLFragment);
+                spokenSharedPreferences.saveSysIPAddress(churchListAdapter.getContentId(position));
+                spokenSharedPreferences.saveDacastContentTitle(churchListAdapter.getContentTitle(position));
+                spokenSharedPreferences.saveChurchOnlineThumbnail(churchListAdapter
+                        .getChurchThumbnail(position));
+                spokenSharedPreferences.saveChurchOnline(churchListAdapter.getIsOnline(position));
+                Navigation.findNavController(view).navigate(R.id.selectedChurchFragment);
+                //Intent intent = new Intent(requireActivity(), FullscreenActivity.class);
+                //Intent is used to switch from one activity to another.
+                ((SpokenMainScreen)requireActivity()).changeToolbarTitle(churchListAdapter
+                        .getContentTitle(position));
+
             }
 
             @Override
@@ -81,47 +115,17 @@ public class ChurchPageFragment extends DaggerFragment {
             }
         }));
 
-    }
+        observableViewModel();
 
-    private void loadAvailableChurches() {
-        churchGridView = root.findViewById(R.id.churchGridview);
-        list = getChurchList();
-        churchGridView.setHasFixedSize(true);
-        manager = new GridLayoutManager(getActivity(), 2);
-        churchGridView.setLayoutManager(manager);
-        churchGridView.addItemDecoration(new DividerItemDecorator(2));
-        churchGridView.setAdapter(new ChurchListAdapter(list,getContext()));
-    }
-
-    private ArrayList<Church> getChurchList(){
-        int[] logos = {R.drawable.church,
-                R.drawable.churchofgod,
-                R.drawable.smalltownchurch,
-                R.drawable.dominicanchurch,
-                R.drawable.unnamed,
-                R.drawable.usachurch,
-                R.drawable.images,
-                R.drawable.indianchurch,
-                R.drawable.meckarchitekten,
-                R.drawable.gettyimages};
-        String[] churchNameList = {
-                "Spoken Word",
-                "Beaulah",
-                "Branham",
-                "Golden Grain",
-                "Original Seed",
-                "Eternal Home",
-                "Abraham Seed",
-                "Gideon 300",
-                "Beautiful Gate",
-                "Jasper Tabernacle"
-        };
-
-        for(int i=0; i<churchNameList.length; i++ ){
-            church = new Church(logos[i],churchNameList[i]);
-            list.add(church);
+        if(isAdded()) {
+            ((SpokenMainScreen) requireActivity()).changePlayerInvisibility();
         }
-        Log.e("Size", ""+list.size());
+
+    }
+
+
+    private List<DacastChannelAnalyticsEntity> getChurchList() {
+        list = churchPageViewModel.getRepos().getValue();
         return list;
     }
 
@@ -132,5 +136,36 @@ public class ChurchPageFragment extends DaggerFragment {
         super.onAttach(activity);
 
     }
+
+    private void observableViewModel() {
+        churchPageViewModel.getRepos().observe(getViewLifecycleOwner(), repos -> {
+            if(repos != null) churchGridView.setVisibility(View.VISIBLE);
+        });
+
+        churchPageViewModel.getError().observe(getViewLifecycleOwner(), isError -> {
+            if (isError != null) {
+                if(isError) {
+                    errorTextView.setVisibility(View.VISIBLE);
+                    churchGridView.setVisibility(View.INVISIBLE);
+                    errorTextView.setText(R.string.errorChurchLoad);
+                }
+            }else {
+                errorTextView.setVisibility(View.INVISIBLE);
+                errorTextView.setText(null);
+            }
+        });
+
+        churchPageViewModel.getLoading().observe(getViewLifecycleOwner(), isLoading -> {
+            if (isLoading != null) {
+                progressBar.setVisibility(isLoading ? View.VISIBLE : View.INVISIBLE);
+                if (isLoading) {
+                    errorTextView.setVisibility(View.INVISIBLE);
+                    churchGridView.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+    }
+
+
 
 }

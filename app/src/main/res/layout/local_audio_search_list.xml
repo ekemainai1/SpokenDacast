@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/audioThumbnail_search"
+        android:layout_width="53dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/branham"
+        card_view:civ_border_color="#FF000000"
+        card_view:civ_border_width="2dp"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintEnd_toStartOf="@+id/guideline"
+        card_view:layout_constraintHorizontal_bias="0.0"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintVertical_bias="0.517" />
+
+    <TextView
+        android:id="@+id/audioTitle_search"
+        android:layout_width="0dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toEndOf="@id/audioThumbnail_search"
+        android:textSize="16sp"
+        android:fontFamily="@font/averia_sans_libre_light"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/audio_title"
+        android:textStyle="bold"
+        card_view:layout_constraintBottom_toTopOf="@+id/audioArtist_search"
+        card_view:layout_constraintEnd_toStartOf="@+id/guideline"
+        card_view:layout_constraintHorizontal_bias="0.0"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/audioArtist_search"
+        android:layout_width="0dp"
+        android:layout_height="19dp"
+        android:layout_below="@+id/audioTitle_search"
+        android:layout_marginStart="68dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_toEndOf="@id/audioThumbnail_search"
+        android:textSize="14sp"
+        android:fontFamily="@font/averia_sans_libre_light"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/audio_artist"
+        android:textStyle="italic"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintEnd_toStartOf="@+id/guideline"
+        card_view:layout_constraintHorizontal_bias="0.0"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/audioTitle_search" />
+
+    <TextView
+        android:id="@+id/audioTime_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_toEndOf="@+id/audioTitle_search"
+        android:textSize="14sp"
+        android:fontFamily="@font/averia_sans_libre_light"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/time"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintEnd_toStartOf="@+id/audioChoice_search"
+        card_view:layout_constraintHorizontal_bias="0.0"
+        card_view:layout_constraintStart_toStartOf="@+id/guideline"
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/audioSize_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/audioTime_search"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="5dp"
+        android:layout_toEndOf="@+id/audioArtist_search"
+        android:textSize="14sp"
+        android:fontFamily="@font/averia_sans_libre_light"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/size"
+        android:textStyle="italic"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintEnd_toStartOf="@+id/audioChoice_search"
+        card_view:layout_constraintHorizontal_bias="0.0"
+        card_view:layout_constraintStart_toStartOf="@+id/guideline"
+        card_view:layout_constraintTop_toBottomOf="@+id/audioTime_search"
+        card_view:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/audioChoice_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/audioTime_search"
+        android:contentDescription="@string/audio_songs_options"
+        android:src="@drawable/ic_baseline_menu_open_24"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintHorizontal_bias="0.893"
+        card_view:layout_constraintStart_toStartOf="@+id/guideline"
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintVertical_bias="0.473" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        card_view:layout_constraintGuide_end="110dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

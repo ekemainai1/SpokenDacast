@@ -7,6 +7,7 @@ import com.example.spokenwapp.data.database.AppLocalDatabase;
 import com.example.spokenwapp.data.model.LocalAudioDao;
 import com.example.spokenwapp.data.model.LocalVideoDao;
 import com.example.spokenwapp.data.repository.LocalVideoRepository;
+import com.example.spokenwapp.data.repository.RepositoryService;
 
 import javax.inject.Named;
 import dagger.Module;
@@ -46,6 +47,7 @@ public class LocalVideoRepoModule {
     LocalAudioDao provideLocalLocalAudioDao(AppLocalDatabase appLocalDatabase){
         return appLocalDatabase.localAudioDao();
     }
+
 
 
 }

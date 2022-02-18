@@ -3,16 +3,8 @@ package com.example.spokenwapp.ui.pager;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +32,6 @@ public class SpokenViewPager extends DaggerFragment {
     TabLayout tabLayoutSpoken;
     private View root;
 
-
     SpokenViewPagerAdapter spokenViewPagerAdapter;
     SpokenViewPagerViewModel spokenViewPagerViewModel;
     ApplicationComponent applicationComponent;
@@ -62,14 +53,14 @@ public class SpokenViewPager extends DaggerFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-            // Inflate the layout for this fragment
-            root = inflater.inflate(R.layout.fragment_spoken_view_pager, container, false);
+        // Inflate the layout for this fragment
+        root = inflater.inflate(R.layout.fragment_spoken_view_pager, container, false);
         return root;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         applicationComponent = DaggerApplicationComponent.builder()
                 .application(new SpokenBaseApplication())
@@ -78,11 +69,11 @@ public class SpokenViewPager extends DaggerFragment {
         setRetainInstance(true);
         viewPager2Spoken = root.findViewById(R.id.pager);
         tabLayoutSpoken = root.findViewById(R.id.tab_layout);
-        spokenViewPagerViewModel = ViewModelProviders.of(this, viewModelFactory)
+        spokenViewPagerViewModel = new ViewModelProvider(this, viewModelFactory)
                 .get(SpokenViewPagerViewModel.class);
 
 
-        //spokenViewPagerViewModel = new ViewModelProvider(requireActivity()).get(SpokenViewPagerViewModel.class);
+        spokenViewPagerViewModel = new ViewModelProvider(requireActivity(), viewModelFactory).get(SpokenViewPagerViewModel.class);
 
         spokenViewPagerAdapter = new SpokenViewPagerAdapter(this);
         viewPager2Spoken.setAdapter(spokenViewPagerAdapter);
@@ -104,6 +95,7 @@ public class SpokenViewPager extends DaggerFragment {
             }
         }).attach();
 
+
     }
 
 
@@ -111,9 +103,6 @@ public class SpokenViewPager extends DaggerFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         AndroidSupportInjection.inject(this);
-
     }
-
-
 
 }

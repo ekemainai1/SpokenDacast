@@ -20,7 +20,7 @@ public class LocalVideoEntity {
     private String localVideoSize;
 
     @ColumnInfo(name = "video_Duration")
-    private String localVideoDuration;
+    private long localVideoDuration;
 
     @ColumnInfo(name = "video_FilePath")
     private String localVideoFilePath;
@@ -31,21 +31,25 @@ public class LocalVideoEntity {
     @ColumnInfo(name = "video_Artist")
     private String localVideoArtist;
 
+    @ColumnInfo(name = "video_Album")
+    private String localVideoAlbum;
+
     @Ignore
-    public LocalVideoEntity(String localVideoTitle, String localVideoSize, String localVideoDuration,
+    public LocalVideoEntity(String localVideoTitle, String localVideoSize, long localVideoDuration,
                             String localVideoFilePath, String localVideoThumbnailUri,
-                            String localVideoArtist) {
+                            String localVideoArtist, String localVideoAlbum) {
         this.localVideoTitle = localVideoTitle;
         this.localVideoSize = localVideoSize;
         this.localVideoDuration = localVideoDuration;
         this.localVideoFilePath = localVideoFilePath;
         this.localVideoThumbnailUri = localVideoThumbnailUri;
         this.localVideoArtist = localVideoArtist;
+        this.localVideoAlbum = localVideoAlbum;
     }
 
     public LocalVideoEntity(long id, String localVideoTitle, String localVideoSize,
-                            String localVideoDuration, String localVideoFilePath,
-                            String localVideoThumbnailUri, String localVideoArtist) {
+                            long localVideoDuration, String localVideoFilePath,
+                            String localVideoThumbnailUri, String localVideoArtist, String localVideoAlbum) {
         this.id = id;
         this.localVideoTitle = localVideoTitle;
         this.localVideoSize = localVideoSize;
@@ -53,6 +57,7 @@ public class LocalVideoEntity {
         this.localVideoFilePath = localVideoFilePath;
         this.localVideoThumbnailUri = localVideoThumbnailUri;
         this.localVideoArtist = localVideoArtist;
+        this.localVideoAlbum = localVideoAlbum;
     }
 
     public long getId() {
@@ -79,11 +84,11 @@ public class LocalVideoEntity {
         this.localVideoSize = localVideoSize;
     }
 
-    public String getLocalVideoDuration() {
+    public long getLocalVideoDuration() {
         return localVideoDuration;
     }
 
-    public void setLocalVideoDuration(String localVideoDuration) {
+    public void setLocalVideoDuration(long localVideoDuration) {
         this.localVideoDuration = localVideoDuration;
     }
 
@@ -97,6 +102,14 @@ public class LocalVideoEntity {
 
     public String getLocalVideoFilePath() {
         return localVideoFilePath;
+    }
+
+    public String getLocalVideoAlbum() {
+        return localVideoAlbum;
+    }
+
+    public void setLocalVideoAlbum(String localVideoAlbum) {
+        this.localVideoAlbum = localVideoAlbum;
     }
 
     public void setLocalVideoFilePath(String localVideoFilePath) {

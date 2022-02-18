@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="select_online_service">Select Online Service</string>
+    <string name="annoucement">Announcement</string>
+    <string name="play_pause">PLAY/PAUSE</string>
+    <string name="content_title">Content Title</string>
+    <string name="video_sermons">Video Sermons</string>
+    <string name="audio_sermons">Audio Sermons</string>
+    <string name="specials">Specials</string>
+    <string name="live">Live</string>
+    <string name="offline">Offline</string>
+    <string name="church_name">Church Name</string>
+    <string name="viewers">20 Viewers</string>
+    <string name="contact">Contact us at</string>
+    <string name="service_offline">Offline</string>
+    <string name="service_on">Live</string>
+    <string name="service_name">SpokenMediaBrowserService</string>
+    <string name="pause">Pauase</string>
+    <string name="channel_name_music">SpokenMusic</string>
+    <string name="channel_description_music">Spoken Local Music</string>
+    <string name="favorite">Favourite</string>
+    <string name="error_no_metadata">Error no metadata</string>
+    <string name="browse_genres">Browse genres</string>
+    <string name="browse_genre_subtitle">Browse genres subtitle</string>
+    <string name="browse_musics_by_genre_subtitle">Browse music by genre subtitle</string>
+    <string name="random_queue_title">Random queue title</string>
+    <string name="label_previous">Previous</string>
+    <string name="label_next">Next</string>
+    <string name="startTime">02:30:45</string>
+    <string name="startTimer">00:00:00</string>
+    <string name="search">Search</string>
+    <string name="search_songs">Search Songs by title and Artist</string>
+    <string name="share">SHARE</string>
+    <string name="artist">Artist</string>
+    <string name="viewssel">10 Views</string>
+    <string name="options_for_content">Options for content</string>
+    <string name="details">DETAILS</string>
+    <string name="download_audio_file">Download audio file</string>
+    <string name="download">DOWNLOAD</string>
+</resources>

@@ -18,8 +18,11 @@ public class LocalAudioEntity {
         @ColumnInfo(name = "audio_Size")
         private String localAudioSize;
 
-        @ColumnInfo(name = "video_Duration")
+        @ColumnInfo(name = "audio_Duration")
         private String localAudioDuration;
+
+        @ColumnInfo(name = "long_Duration")
+        private long localLongDuration;
 
         @ColumnInfo(name = "audio_FilePath")
         private String localAudioFilePath;
@@ -33,37 +36,59 @@ public class LocalAudioEntity {
         @ColumnInfo(name = "artist_Album")
         private String localAudioAlbum;
 
+        @ColumnInfo(name = "genres_id")
+        private String localGenresId;
+
+        @ColumnInfo(name = "genres_name")
+        private String localGenresName;
+
+        @ColumnInfo(name = "genres_key")
+        private String localGenresKey;
+
+
     public LocalAudioEntity(long id, String localAudioTitle, String localAudioSize,
-                            String localAudioDuration, String localAudioFilePath,
+                            String localAudioDuration, long localLongDuration, String localAudioFilePath,
                             String localAudioThumbnailUri, String localAudioArtist,
-                            String localAudioAlbum) {
+                            String localAudioAlbum, String localGenresId, String localGenresName,
+                            String localGenresKey) {
         this.id = id;
         this.localAudioTitle = localAudioTitle;
         this.localAudioSize = localAudioSize;
         this.localAudioDuration = localAudioDuration;
+        this.localLongDuration = localLongDuration;
         this.localAudioFilePath = localAudioFilePath;
         this.localAudioThumbnailUri = localAudioThumbnailUri;
         this.localAudioArtist = localAudioArtist;
         this.localAudioAlbum = localAudioAlbum;
+        this.localGenresId = localGenresId;
+        this.localGenresName = localGenresName;
+        this.localGenresKey = localGenresKey;
     }
 
     @Ignore
     public LocalAudioEntity(String localAudioTitle, String localAudioSize,
-                            String localAudioDuration, String localAudioFilePath,
+                            String localAudioDuration, long localLongDuration, String localAudioFilePath,
                             String localAudioThumbnailUri, String localAudioArtist,
-                            String localAudioAlbum) {
+                            String localAudioAlbum, String localGenresId, String localGenresName,
+                            String localGenresKey) {
         this.localAudioTitle = localAudioTitle;
         this.localAudioSize = localAudioSize;
         this.localAudioDuration = localAudioDuration;
+        this.localLongDuration = localLongDuration;
         this.localAudioFilePath = localAudioFilePath;
         this.localAudioThumbnailUri = localAudioThumbnailUri;
         this.localAudioArtist = localAudioArtist;
         this.localAudioAlbum = localAudioAlbum;
+        this.localGenresId = localGenresId;
+        this.localGenresName = localGenresName;
+        this.localGenresKey = localGenresKey;
     }
 
     public long getId() {
         return id;
     }
+
+
 
     public void setId(long id) {
         this.id = id;
@@ -91,6 +116,14 @@ public class LocalAudioEntity {
 
     public void setLocalAudioDuration(String localAudioDuration) {
         this.localAudioDuration = localAudioDuration;
+    }
+
+    public long getLocalLongDuration() {
+        return localLongDuration;
+    }
+
+    public void setLocalLongDuration(long localLongDuration) {
+        this.localLongDuration = localLongDuration;
     }
 
     public String getLocalAudioFilePath() {
@@ -123,5 +156,29 @@ public class LocalAudioEntity {
 
     public void setLocalAudioAlbum(String localAudioAlbum) {
         this.localAudioAlbum = localAudioAlbum;
+    }
+
+    public String getLocalGenresId() {
+        return localGenresId;
+    }
+
+    public void setLocalGenresId(String localGenresId) {
+        this.localGenresId = localGenresId;
+    }
+
+    public String getLocalGenresName() {
+        return localGenresName;
+    }
+
+    public void setLocalGenresName(String localGenresName) {
+        this.localGenresName = localGenresName;
+    }
+
+    public String getLocalGenresKey() {
+        return localGenresKey;
+    }
+
+    public void setLocalGenresKey(String localGenresKey) {
+        this.localGenresKey = localGenresKey;
     }
 }

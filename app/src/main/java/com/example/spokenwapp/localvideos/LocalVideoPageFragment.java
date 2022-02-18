@@ -2,40 +2,35 @@ package com.example.spokenwapp.localvideos;
 
 import androidx.lifecycle.ViewModelProvider;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import com.example.spokenwapp.R;
 import com.example.spokenwapp.adapters.LocalVideoListAdapter;
+import com.example.spokenwapp.adapters.OnItemTouchListener;
+import com.example.spokenwapp.adapters.RecyclerViewOnItemTouchListener;
 import com.example.spokenwapp.base.SpokenBaseApplication;
+import com.example.spokenwapp.base.SpokenMainScreen;
 import com.example.spokenwapp.base.ViewModelFactory;
 import com.example.spokenwapp.data.model.LocalVideoEntity;
-import com.example.spokenwapp.data.model.VideosList;
 import com.example.spokenwapp.di.components.ApplicationComponent;
 import com.example.spokenwapp.di.components.DaggerApplicationComponent;
 import com.example.spokenwapp.di.modules.ApplicationModule;
 import com.example.spokenwapp.di.modules.LocalVideoRepoModule;
+import com.example.spokenwapp.players.SpokenOnlinePlayerFragment;
+import com.example.spokenwapp.utilities.SpokenSharedPreferences;
 
 import java.util.List;
-import java.util.Objects;
-
 import javax.inject.Inject;
-import javax.inject.Named;
-import dagger.android.AndroidInjection;
 import dagger.android.support.DaggerFragment;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 
 public class LocalVideoPageFragment extends DaggerFragment {
@@ -44,14 +39,13 @@ public class LocalVideoPageFragment extends DaggerFragment {
     private View rootView;
 
     ApplicationComponent applicationComponent;
+    @Inject
     ViewModelFactory viewModelFactory;
     private RecyclerView recyclerViewVideos;
-
-
-    CompositeDisposable compositeDisposable;
+    List<LocalVideoEntity> localVideoList;
     LocalVideoListAdapter localVideoListAdapter;
     LocalVideoPageViewModel localVideoPageViewModel;
-
+    SpokenSharedPreferences spokenSharedPreferences;
 
     public static LocalVideoPageFragment newInstance() {
         return new LocalVideoPageFragment();
@@ -74,31 +68,72 @@ public class LocalVideoPageFragment extends DaggerFragment {
                 .build();
         applicationComponent.inject(this);
 
-        localVideoPageViewModel = ViewModelProviders.of(this, viewModelFactory)
-                .get(LocalVideoPageViewModel.class);
+        localVideoPageViewModel = new ViewModelProvider(this, viewModelFactory).get(LocalVideoPageViewModel.class);
+        localVideoListAdapter = new LocalVideoListAdapter(localVideoPageViewModel,this,
+                this.requireActivity());
+
+        ((SpokenMainScreen)requireActivity()).changePlayerInvisibility();
+
+        localVideoList = getLocalVideoList();
+        spokenSharedPreferences = new SpokenSharedPreferences(requireActivity());
+
         recyclerViewVideos = rootView.findViewById(R.id.localVideoList);
-        RecyclerView.LayoutManager videosLayoutManager = new LinearLayoutManager(this.getContext());
+        recyclerViewVideos.setHasFixedSize(true);
+        RecyclerView.LayoutManager videosLayoutManager = new LinearLayoutManager(requireActivity());
         recyclerViewVideos.setLayoutManager(videosLayoutManager);
-        compositeDisposable = new CompositeDisposable();
-        compositeDisposable.add(localVideoPageViewModel.getVideos(this.getActivity().getApplication())
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<List<LocalVideoEntity>>() {
-                    @Override
-                    public void accept(List<LocalVideoEntity> localVideoEntities) throws Exception {
-                        if(localVideoEntities != null) {
-                            localVideoListAdapter = new LocalVideoListAdapter(localVideoEntities,this );
-                            recyclerViewVideos.setAdapter(localVideoListAdapter);
-                            Log.e("RetrieveVideos", ""+localVideoEntities.size());
-                        }
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        Log.e("LocalVideoPageFragment", "exception getting videos");
-                    }
-                })
-        );
+        recyclerViewVideos.setAdapter(localVideoListAdapter);
+
+        observableLocalVideoViewModel();
+
+        recyclerViewVideos.addOnItemTouchListener(new RecyclerViewOnItemTouchListener(requireActivity(),
+                recyclerViewVideos, new OnItemTouchListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Navigation.findNavController(view).navigate(R.id.spokenOnlinePlayerFragment);
+                spokenSharedPreferences.saveMediaData(localVideoListAdapter.getId(position),
+                        localVideoListAdapter.getVideoPath(position), localVideoListAdapter.getTitle(position));
+
+                spokenSharedPreferences.saveTheoPlayerState("video");
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
+    }
+
+    private List<LocalVideoEntity> getLocalVideoList() {
+        localVideoList = localVideoPageViewModel.getLocalVideoRepos().getValue();
+        return localVideoList;
+    }
+
+    private void observableLocalVideoViewModel() {
+        localVideoPageViewModel.getLocalVideoRepos().observe(getViewLifecycleOwner(), repos -> {
+            if(repos != null) recyclerViewVideos.setVisibility(View.VISIBLE);
+            Toast.makeText(requireActivity(), "Videos Loaded",Toast.LENGTH_LONG).show();
+        });
+
+        localVideoPageViewModel.getLocalVideoError().observe(getViewLifecycleOwner(), isError -> {
+            if (isError != null) {
+                if(isError) {
+                    recyclerViewVideos.setVisibility(View.INVISIBLE);
+                    Toast.makeText(requireActivity(), "Error Loading Videos ...",Toast.LENGTH_LONG).show();
+                }
+            }else {
+                recyclerViewVideos.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        localVideoPageViewModel.getLoading().observe(getViewLifecycleOwner(), isLoading -> {
+            if (isLoading != null) {
+                Toast.makeText(requireActivity(), "Videos Loading ...",Toast.LENGTH_LONG).show();
+                if (isLoading) {
+                    recyclerViewVideos.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
     }
 
     @SuppressWarnings("deprecation")
@@ -110,10 +145,7 @@ public class LocalVideoPageFragment extends DaggerFragment {
     @Override
     public void onDestroyView(){
         super.onDestroyView();
-        //dispose subscriptions
-        if (compositeDisposable != null && !compositeDisposable.isDisposed()) {
-            compositeDisposable.clear();
-        }
+
     }
 
 

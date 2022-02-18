@@ -3,18 +3,10 @@ package com.example.spokenwapp.base;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-
-import com.example.spokenwapp.data.repository.LocalVideoRepository;
-
 import java.util.Map;
-
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.inject.Provider;
-import javax.inject.Singleton;
 
-import dagger.Provides;
-import io.reactivex.disposables.CompositeDisposable;
 
 @SuppressWarnings("unchecked")
 @LocalVideoScope
@@ -44,7 +36,6 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
             throw new IllegalArgumentException("unknown model class " + modelClass);
         }
         try {
-
             return (T) creator.get();
         } catch (Exception e) {
             throw new RuntimeException(e);
